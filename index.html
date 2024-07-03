@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+
+  <body>
+    <style>
+      input.ng-invalid {
+        background-color: red;
+      }
+    </style>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <p>First Name: <input type="text" ng-model="person.firstName" /></p>
+      <p>Last Name: <input type="text" ng-model="person.lastName" /></p>
+      <p>Hello {{person.firstName + " " + person.lastName}}</p>
+      <span ng-bind="person.firstName"></span>
+      <span my-directive></span>
+      <p ng-repeat="item in myArray">{{item}}</p>
+
+      <form name="myForm">
+        <input
+          type="text"
+          name="myInput"
+          ng-model="text"
+          required
+          custom-directive
+        />
+        <p>{{myForm.myInput.$valid}}</p>
+
+        <!-- <p ng-show="myForm.myInput.$error.email">Please enter a valid email</p> -->
+
+        <p>
+          {{myForm.myInput.$valid}} {{myForm.myInput.$dirty}}
+          {{myForm.myInput.$touched}}
+        </p>
+      </form>
+
+      <h1 ng-click="changeName()">{{myName}}</h1>
+
+      <h2>{{myTime}}</h2>
+      <p>Hex : {{hex}}</p>
+      <ul>
+        <li ng-repeat="x in counts">{{x | myFilter}}</li>
+      </ul>
+
+      <p>{{myWelcome}}</p>
+    </div>
+
+    <script src="myController.js"></script>
+  </body>
+</html>
